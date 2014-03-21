@@ -15,8 +15,8 @@ def is_valid_param(param):
     return True
 
 def irc_split(data):
-    prefix = ''
-    buf = data
+    prefix = u''
+    buf = data.decode("utf-8")
     trailing = None
     command = None
 
@@ -28,9 +28,9 @@ def irc_split(data):
     try:
         command, buf = buf.split(DELIM, 1)
     except ValueError:
-        raise ProtocolViolationError('no command received: %r' % buf)
+        raise ProtocolViolationError(u'no command received: {}'.foramt(buf))
     try:
-        buf, trailing = buf.split(DELIM + ':', 1)
+        buf, trailing = buf.split(u"{:}".format(DELIM), 1)
     except ValueError:
         pass
     params = buf.split(DELIM)

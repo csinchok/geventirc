@@ -6,8 +6,9 @@ from geventirc import replycode
 def ping_handler(client, msg):
     client.send_message(message.Pong())
 
+
 def print_handler(client, msg):
-    print msg.encode()[:-2]
+    print(msg.encode()[:-2])
 
 
 class JoinHandler(object):
